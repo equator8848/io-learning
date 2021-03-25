@@ -1,4 +1,4 @@
-package com.equator.common;
+package com.equator.timeserver.common;
 
 /**
  * @author libinkai
