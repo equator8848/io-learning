@@ -18,6 +18,8 @@
         <maven.compiler.target>1.8</maven.compiler.target>
         <lombok.version>1.18.10</lombok.version>
         <logback.version>1.1.11</logback.version>
+        <!--生产环境推荐使用4.1.60.Final-->
+        <netty.version>5.0.0.Alpha1</netty.version>
     </properties>
 
     <dependencies>
@@ -42,6 +44,11 @@
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
             <version>${logback.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.netty</groupId>
+            <artifactId>netty-all</artifactId>
+            <version>${netty.version}</version>
         </dependency>
     </dependencies>
 
