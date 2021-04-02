@@ -19,3 +19,5 @@
 - 客户端个数:IO线程数 = M:0 （不需要额外的IO线程，被动回调）
 ### Netty
 - Netty是NIO框架
+## 粘包和拆包
+- LineBasedFrameDecoder是以换行符为结束标志的解码器
