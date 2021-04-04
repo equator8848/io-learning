@@ -1,4 +1,4 @@
-package com.equator.datapackage.good;
+package com.equator.timeserver.datapackage.good;
 
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.ChannelFuture;

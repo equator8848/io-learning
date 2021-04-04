@@ -1,4 +1,4 @@
-package com.equator.datapackage.bad;
+package com.equator.timeserver.datapackage.bad;
 
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.ChannelFuture;

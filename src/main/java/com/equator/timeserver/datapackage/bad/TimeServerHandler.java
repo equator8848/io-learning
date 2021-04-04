@@ -1,4 +1,4 @@
-package com.equator.datapackage.bad;
+package com.equator.timeserver.datapackage.bad;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;

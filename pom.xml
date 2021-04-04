@@ -20,6 +20,8 @@
         <logback.version>1.1.11</logback.version>
         <!--生产环境推荐使用4.1.60.Final-->
         <netty.version>5.0.0.Alpha1</netty.version>
+        <msgpack.version>0.6.6</msgpack.version>
+        <javassist.version>3.9.0.GA</javassist.version>
     </properties>
 
     <dependencies>
@@ -49,6 +51,16 @@
             <groupId>io.netty</groupId>
             <artifactId>netty-all</artifactId>
             <version>${netty.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.msgpack</groupId>
+            <artifactId>msgpack</artifactId>
+            <version>${msgpack.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>javassist</groupId>
+            <artifactId>javassist</artifactId>
+            <version>${javassist.version}</version>
         </dependency>
     </dependencies>
 
