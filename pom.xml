@@ -22,6 +22,7 @@
         <netty.version>5.0.0.Alpha1</netty.version>
         <msgpack.version>0.6.6</msgpack.version>
         <javassist.version>3.9.0.GA</javassist.version>
+        <protobuf.version>2.5.0</protobuf.version>
     </properties>
 
     <dependencies>
@@ -61,6 +62,11 @@
             <groupId>javassist</groupId>
             <artifactId>javassist</artifactId>
             <version>${javassist.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.protobuf</groupId>
+            <artifactId>protobuf-java</artifactId>
+            <version>${protobuf.version}</version>
         </dependency>
     </dependencies>
 
