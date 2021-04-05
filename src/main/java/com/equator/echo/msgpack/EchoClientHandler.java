@@ -15,8 +15,6 @@ public class EchoClientHandler extends ChannelHandlerAdapter {
 
     private int sendTimes;
 
-    private final String req = "Hello, Netty ...$_$";
-
     public EchoClientHandler(int sendTimes) {
         this.sendTimes = sendTimes;
     }
@@ -28,29 +26,33 @@ public class EchoClientHandler extends ChannelHandlerAdapter {
     }
 
     private UserInfo[] buildUserInfo() {
-        UserInfo[] userInfos = new UserInfo[sendTimes];
+        UserInfo[] userInfoList = new UserInfo[sendTimes];
         for (int i = 0; i < sendTimes; i++) {
             UserInfo userInfo = new UserInfo();
             userInfo.setUserName("leo" + i);
             userInfo.setAge(i + 18);
-            userInfos[i] = userInfo;
+            userInfoList[i] = userInfo;
         }
-        return userInfos;
+        return userInfoList;
     }
 
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
-        UserInfo[] userInfos = buildUserInfo();
-        for (UserInfo userInfo : userInfos) {
-            ctx.write(userInfo);
-        }
-        ctx.flush();
+        UserInfo[] userInfoList = buildUserInfo();
+        /**
+         * 对list里面的元素进行逐个发送，对面也是逐个接收。反之则一并接收
+         for (UserInfo userInfo : userInfoList) {
+         ctx.write(userInfo);
+         log.debug("client try write {}", userInfo);
+         }
+         ctx.flush();
+         **/
+        ctx.writeAndFlush(userInfoList);
     }
 
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
         log.info("Echo Client receive {}, times is {}", msg, ++counter);
-        ctx.write(msg);
     }
 
     @Override

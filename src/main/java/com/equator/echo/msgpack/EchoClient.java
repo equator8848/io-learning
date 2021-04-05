@@ -11,6 +11,8 @@ import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
 import io.netty.handler.codec.DelimiterBasedFrameDecoder;
+import io.netty.handler.codec.LengthFieldBasedFrameDecoder;
+import io.netty.handler.codec.LengthFieldPrepender;
 import io.netty.handler.codec.string.StringDecoder;
 import lombok.extern.slf4j.Slf4j;
 
@@ -30,9 +32,13 @@ public class EchoClient {
                     .handler(new ChannelInitializer<SocketChannel>() {
                         @Override
                         protected void initChannel(SocketChannel channel) throws Exception {
-                            channel.pipeline().addLast("msgpack decoder",new MsgPackDecoder());
-                            channel.pipeline().addLast("msgpack encoder",new MsgPackEncoder());
-                            channel.pipeline().addLast(new EchoClientHandler(10));
+                            // 解码器之前增加LengthFieldBasedFrameDecoder用于处理半包消息
+                            channel.pipeline().addLast("frameDecoder", new LengthFieldBasedFrameDecoder(65535, 0, 2, 0, 2));
+                            channel.pipeline().addLast("msgpack decoder", new MsgPackDecoder());
+                            // 编码器之前增加LengthFieldPrepender，其会在ByteBuf之前增加2个字节的消息长度字段
+                            channel.pipeline().addLast("frameEncoder",new LengthFieldPrepender(2));
+                            channel.pipeline().addLast("msgpack encoder", new MsgPackEncoder());
+                            channel.pipeline().addLast(new EchoClientHandler(1000));
                         }
                     });
             // 发起异步连接操作
