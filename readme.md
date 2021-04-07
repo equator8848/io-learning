@@ -59,5 +59,16 @@
 
 - 更多是在JBoss内部使用
 
-## MessagePack编码解码器
+### MessagePack编码解码器
+
+### ProtoBuf解码编码器
+
+# HTTP协议开发
+
+# WebSocket协议开发
+## 协议特点
+- 单一的TCP连接，全双工通信模式
+- 无头部信息、Cookie和身份认证、安全开销
+- 通过ping/pong帧保持链路激活
+# 私有协议开发
 
